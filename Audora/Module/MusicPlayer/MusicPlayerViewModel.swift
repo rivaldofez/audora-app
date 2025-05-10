@@ -40,7 +40,7 @@ final class MusicPlayerViewModel: DefaultViewModel, MusicPlayerViewModelProtocol
     }
     
     func getMusicList(query: String) {
-        let resultQuery = query.isEmpty ? "bruno mars" : query
+        let resultQuery = query.isEmpty ? "die with a smile " : query
         call(argument: musicUseCase.getMusicList(query: resultQuery)) { [weak self] data in
             self?.musicList = data?.results ?? []
         }
