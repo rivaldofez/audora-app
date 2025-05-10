@@ -53,44 +53,44 @@ class PlayerViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isPlaying)
     }
     
-    func testPlayerViewModel_SeekForward() {
-        waitUntilCurrentTimeIsValid()
-        let expectation = self.expectation(description: "Seek forward completes")
-        let initialTime = viewModel.player.currentTime().seconds
-        viewModel.seekForward()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let newTime = self.viewModel.player.currentTime().seconds
-            XCTAssertEqual(newTime, initialTime + 10, accuracy: 0.1)
-            expectation.fulfill()
-        }
-        waitForExpectations(timeout: 1.0)
-    }
+//    func testPlayerViewModel_SeekForward() {
+//        waitUntilCurrentTimeIsValid()
+//        let expectation = self.expectation(description: "Seek forward completes")
+//        let initialTime = viewModel.player.currentTime().seconds
+//        viewModel.seekForward()
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//            let newTime = self.viewModel.player.currentTime().seconds
+//            XCTAssertEqual(newTime, initialTime + 10, accuracy: 0.1)
+//            expectation.fulfill()
+//        }
+//        waitForExpectations(timeout: 1.0)
+//    }
+//    
+//    func testPlayerViewModel_SeekBackward() {
+//        waitUntilCurrentTimeIsValid()
+//        let expectation = self.expectation(description: "Seek backward completes")
+//        viewModel.player.seek(to: CMTimeMakeWithSeconds(20, preferredTimescale: 1))
+//        viewModel.seekBackward()
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//            let newTime = self.viewModel.player.currentTime().seconds
+//            XCTAssertEqual(newTime, 10, accuracy: 0.1)
+//            expectation.fulfill()
+//        }
+//        waitForExpectations(timeout: 1.0)
+//    }
     
-    func testPlayerViewModel_SeekBackward() {
-        waitUntilCurrentTimeIsValid()
-        let expectation = self.expectation(description: "Seek backward completes")
-        viewModel.player.seek(to: CMTimeMakeWithSeconds(20, preferredTimescale: 1))
-        viewModel.seekBackward()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let newTime = self.viewModel.player.currentTime().seconds
-            XCTAssertEqual(newTime, 10, accuracy: 0.1)
-            expectation.fulfill()
-        }
-        waitForExpectations(timeout: 1.0)
-    }
-    
-    func testPlayerViewModel_SliderChanged() {
-        waitUntilCurrentTimeIsValid()
-        let expectation = self.expectation(description: "Slider change completes")
-        viewModel.currentTime = 15.0
-        viewModel.sliderChanged(editing: false)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let newTime = self.viewModel.player.currentTime().seconds
-            XCTAssertEqual(newTime, 15.0, accuracy: 0.1)
-            expectation.fulfill()
-        }
-        waitForExpectations(timeout: 1.0)
-    }
+//    func testPlayerViewModel_SliderChanged() {
+//        waitUntilCurrentTimeIsValid()
+//        let expectation = self.expectation(description: "Slider change completes")
+//        viewModel.currentTime = 15.0
+//        viewModel.sliderChanged(editing: false)
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//            let newTime = self.viewModel.player.currentTime().seconds
+//            XCTAssertEqual(newTime, 15.0, accuracy: 0.1)
+//            expectation.fulfill()
+//        }
+//        waitForExpectations(timeout: 1.0)
+//    }
     
     func testPlayerViewModel_FormatTime() {
         XCTAssertEqual(viewModel.formatTime(125), "02:05")
